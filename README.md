@@ -80,13 +80,13 @@ For Product Crawl (after running the listing crawl):
 docker run --rm -v $(pwd):/app web_scraper_image python3 crawler.py --source_name Steamcommunity-US --seed_file steamcommunity_us_listing_data_20240914.json --threads 1 --no_pages 3 --crawl_type product
 ```
 ## Explanation:
- --rm: Automatically removes the container after it exits.
- -v $(pwd):/app: Mounts the current directory to the /app directory inside the container, making the files accessible on your machine.
++ --rm: Automatically removes the container after it exits.
++ -v $(pwd):/app: Mounts the current directory to the /app directory inside the container, making the files accessible on your machine.
 ## Directory Structure
- SEED_URLS: Contains the seed URLs for scraping.
- PAGEHTML: Stores the HTML pages downloaded from the URLs.
- LISTING: Contains the listing data.
- PRODUCT: Contains the scraped product details.
- config.yaml: Configuration file with XPaths and scraping rules.
++ SEED_URLS: Contains the seed URLs for scraping.
++ PAGEHTML: Stores the HTML pages downloaded from the URLs.
++ LISTING: Contains the listing data.
++ PRODUCT: Contains the scraped product details.
++ config.yaml: Configuration file with XPaths and scraping rules.
 ## Additional Notes
 Run the listing crawl first to gather product URLs before running the product crawl.
