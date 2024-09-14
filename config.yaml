@@ -1,0 +1,49 @@
+sources:
+  Steamcommunity-US:
+    headers: {
+          'Accept': '*/*',
+          'Accept-Language': 'en-GB,en;q=0.9,en-US;q=0.8,hi;q=0.7',
+          'Connection': 'keep-alive',
+          'If-Modified-Since': 'Sat, 14 Sep 2024 09:36:30 GMT',
+          'Sec-Fetch-Dest': 'empty',
+          'Sec-Fetch-Mode': 'cors',
+          'Sec-Fetch-Site': 'same-origin',
+          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36',
+          'X-Requested-With': 'XMLHttpRequest',
+          'sec-ch-ua': '"Chromium";v="128", "Not;A=Brand";v="24", "Google Chrome";v="128"',
+          'sec-ch-ua-mobile': '?0',
+          'sec-ch-ua-platform': '"macOS"',
+      }
+    pagination_slug: "#p{page_num}_popular_desc"
+    homepage: "https://steamcommunity.com/"
+    retry_text: "You've made too many requests recently. Please wait and try your request again later"
+    refresh_text: "Please try again later"
+    tracker_url: "https://steamcommunity.com/market/itemordersactivity?country=IN&language=english&currency=1&item_nameid={}"
+    data:
+      block: "//div[@id='searchResultsRows']/a"
+      block_data:
+        GameName: ".//span[@class='market_listing_game_name']/text()"
+        ItemName: ".//span[@class='market_listing_item_name']/text()"
+        NormalPrice: ".//span[@class='normal_price']/text()"
+        SalePrice: ".//span[@class='sale_price']/text()"
+        Quantity: ".//span[@class='market_listing_num_listings_qty']/text()"
+        ProductURL: ".//@href"
+        Image: ".//img[contains(@id,'result_')]/@src"
+      page_data: 
+        MarketTitle: "//span[@class='market_title_text']/text()"
+        MarketSubTitle: "//span[@class='market_subtitle_text']/text()"
+
+    product_data:
+      ItemName: //h1[@class="hover_item_name"]/text()
+      ItemType: //div[@id="largeiteminfo_item_type"]/text()
+      GameName: //div[@id="largeiteminfo_game_name"]/text()
+      ItemDescriptors: //div[@class="item_desc_descriptors"]/div//text()
+      CommodityExplanation: //div[@class="market_commodity_explanation"]/text()
+      Image: //div[@class="market_listing_largeimage"]/img/@src
+      ForSaleOrders: "//div[@id='market_commodity_forsale']/span[1]/text()"
+      ForSalePrice: "//div[@id='market_commodity_forsale']/span[2]/text()"
+      BuyRequestOrder: "//div[@id='market_commodity_buyrequests']/span[1]/text()"
+      BuyRequestPrice: "//div[@id='market_commodity_buyrequests']/span[2]/text()"
+      historical_text: "//div[@id='responsive_page_template_content']/script[@type='text/javascript'][contains(text(),'g_rgAssets')]/text()"  
+    product_block: "//div[@class='market_commodity_orders_block']/div[@class='market_commodity_orders_interior']"
+      
